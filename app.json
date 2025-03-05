@@ -4,7 +4,7 @@
     "slug": "aora",
     "scheme": "Aora",
     "version": "1.0.0",
-    "orientation": "landscape",
+    "orientation": "portrait",
     "icon": "./assets/images/logo-small.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
