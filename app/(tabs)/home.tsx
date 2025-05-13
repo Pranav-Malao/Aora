@@ -53,7 +53,7 @@ const Home = () => {
                 Latest videos
               </Text>
 
-              <Trending posts={latestPosts ?? []} />
+              {/* <Trending posts={latestPosts ?? []} /> */}
             </View>
           </View>
         )}
