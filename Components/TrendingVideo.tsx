@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
 import { VideoView, useVideoPlayer } from 'expo-video';
 import { StyleSheet } from 'react-native';
@@ -14,19 +14,6 @@ const TrendingVideo = ({ source='https://commondatastorage.googleapis.com/gtv-vi
     setPlaying(false);
   });
   return (
-    // <Video
-    //   source={{ uri: item.video }}
-    //   className='w-48 h-72 rounded-3xl my-5 mx-2 overflow-hidden shadow-lg shadow-black/40'
-    //   resizeMode={ResizeMode.CONTAIN}
-    //   useNativeControls
-    //   shouldPlay
-    //   onPlaybackStatusUpdate={(status: any) => {
-    //       if (status.didJustFinish) {
-    //         setPlay(false);
-    //       }
-    //     }
-    //   }
-    // />
     <View className='w-48 h-72 rounded-3xl my-5 mx-2'>
       <VideoView
         player={player}

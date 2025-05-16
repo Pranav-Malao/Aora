@@ -9,10 +9,9 @@ interface FormFieldProps {
   placeholder: string;
   handleChangeText: (e: string) => void;
   otherStyles?: string;
-  keyboardType?: string;
 }
 
-const FormField = ({ title, value, placeholder, handleChangeText, otherStyles, keyboardType }: FormFieldProps) => {
+const FormField = ({ title, value, placeholder, handleChangeText, otherStyles }: FormFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <View className={`w-full space-y-2 ${otherStyles}`}>

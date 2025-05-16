@@ -1,5 +1,5 @@
-import { FlatList, Text, View, Image, RefreshControl, Alert } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { FlatList, Text, View, Image, RefreshControl } from 'react-native'
+import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '@/constants'
 import { SearchInput, Trending } from '@/Components'
@@ -75,5 +75,3 @@ const Home = () => {
 }
 
 export default Home
-
-// posts={[{ $id: 1 }, { $id: 2 }, { $id: 3 }]} ?? []

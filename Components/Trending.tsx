@@ -87,7 +87,6 @@ const Trending = ({ posts }: Props) => {
           viewAreaCoveragePercentThreshold: 70,
           minimumViewTime: 200,
         }}
-        // contentOffset={{ x: 170, y: 0 }}
         horizontal
         className='px-5'
       />

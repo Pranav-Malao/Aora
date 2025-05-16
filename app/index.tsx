@@ -7,7 +7,7 @@ import { CustomButton } from '@/Components';
 import { useGlobalContext } from "@/context/GlobalProvider";
 
 export default function Index() {
-  const { isLoading, isLoggedIn, setUser, setIsLoggedIn } = useGlobalContext();
+  const { isLoading, isLoggedIn } = useGlobalContext();
   // if (!isLoading && isLoggedIn) return <Redirect href="/home" />
   if (isLoading) {
     return (

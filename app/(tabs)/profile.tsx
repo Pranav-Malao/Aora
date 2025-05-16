@@ -1,6 +1,5 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { Trending } from '@/Components'
 import { CustomButton } from '@/Components'
 import { signOut } from "@/lib/appwrite";
 import { useGlobalContext } from "@/context/GlobalProvider";
