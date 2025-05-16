@@ -7,9 +7,12 @@ import EmptyState from '@/Components/EmptyState'
 import { getAllPosts, getLatestPosts } from '@/lib/appwrite'
 import useAppwrite from '@/lib/useAppwrite'
 import VideoCard from '@/Components/VideoCard'
+import { useGlobalContext } from '@/context/GlobalProvider'
 const Home = () => {
   const { data: posts, refetch } = useAppwrite(getAllPosts);
   const { data: latestPosts } = useAppwrite(getLatestPosts);
+
+  const {user} = useGlobalContext();
 
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
@@ -23,17 +26,17 @@ const Home = () => {
         data={posts} // elements to render
         keyExtractor={(item) => item.$id.toString()} // unique key for each element
         renderItem={({ item }) => ( // explains react-N what to render
-          <VideoCard video={item}/>
+          <VideoCard video={item} />
         )}
         ListHeaderComponent={() => (
           <View className="my-6 px-4 space-y-6">
             <View className="justify-between items-start flex-row mb-6">
               <View>
                 <Text className="font-pmedium text-sm text-gray-100">
-                  Welcome Back
+                  Welcome Back,
                 </Text>
                 <Text className="text-2xl font-psemibold text-white">
-                  JSMastery
+                  {user?.username}
                 </Text>
               </View>
 
@@ -53,7 +56,7 @@ const Home = () => {
                 Latest videos
               </Text>
 
-              <Trending posts={latestPosts ?? []} />
+              {latestPosts ? <Trending posts={latestPosts ?? []} /> : <Text>Loading...</Text>}
             </View>
           </View>
         )}

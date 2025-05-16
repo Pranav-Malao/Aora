@@ -22,7 +22,7 @@ const GlobalProvider = ({ children }) => {
           setUser(null);
         }
       } catch (err) {
-        console.error("Error fetching user:", err);
+        console.error("Critical error in GlobalProvider's fetchUser:", err);
         setIsLoggedIn(false);
         setUser(null);
       } finally {

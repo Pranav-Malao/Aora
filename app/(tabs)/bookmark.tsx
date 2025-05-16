@@ -1,12 +1,34 @@
-import { Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { CustomButton } from '@/Components'
+import { signOut } from "@/lib/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
+import { router } from "expo-router";
+
 
 const Bookmark = () => {
+  const { setUser, setIsLoggedIn } = useGlobalContext();
+
   return (
-    <SafeAreaView className='border border-red-500 h-20'>
-      <Text className='text-2xl text-black'>Bookmark</Text>
-    </SafeAreaView>
+    <View>
+      <CustomButton
+        title='logout'
+        handlePress={() => {
+          const handleSignOut = async () => {
+            try {
+              await signOut();
+              router.push('/sign-in');
+              setUser(null);
+              setIsLoggedIn(false);
+            } catch (error) {
+              console.log(error);
+            }
+          }
+          handleSignOut();
+        }}
+        containerStyles='w-[50%] mt-7'
+      />
+    </View>
   )
 }
 

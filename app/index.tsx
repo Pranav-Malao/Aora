@@ -44,7 +44,7 @@ export default function Index() {
 
               <Image
                 source={images.path}
-                className="w-[136px] h-[15px] absolute -bottom-4 right-20"
+                className="w-[136px] h-[15px] absolute -bottom-4 -right-[30px]"
                 resizeMode="contain"
               />
             </View>
