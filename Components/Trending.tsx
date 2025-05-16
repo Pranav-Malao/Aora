@@ -1,11 +1,14 @@
-import { View, Text, FlatList, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, FlatList, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import * as Animatable from 'react-native-animatable';
 import { icons } from '@/constants';
+import TrendingVideo from './TrendingVideo';
 
 interface Post {
   $id: string;
   thumbnail: string;
+  title: string;
+  video: any;
 }
 
 interface Props {
@@ -41,7 +44,10 @@ const TrendingItem = ({ activeItem, item }: { activeItem: string, item: Post }) 
       useNativeDriver={true}
     >
       {play ? (
-        <Text>Playing</Text>
+        <TrendingVideo
+          // source={item.video}  !!!!! baad me chalu kar dena
+          setPlaying={setPlay}
+        />
       ) : (
         <TouchableOpacity
           onPress={() => setPlay(true)}
@@ -79,10 +85,11 @@ const Trending = ({ posts }: Props) => {
         onViewableItemsChanged={viewableItemsChanged}
         viewabilityConfig={{
           viewAreaCoveragePercentThreshold: 70,
-          minimumViewTime: 100,
+          minimumViewTime: 200,
         }}
         // contentOffset={{ x: 170, y: 0 }}
         horizontal
+        className='px-5'
       />
     </View>
   );

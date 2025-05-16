@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { icons } from '@/constants'
+import VideoCardVideo from './VideoCardVideo'
 
 interface VideoCardProps {
   video: { title: string, thumbnail: string, video: string, creator: { username: string, avatar: string } }
@@ -21,13 +22,21 @@ const VideoCard = ({ video: { title, thumbnail, video, creator: { username, avat
           </View>
         </View>
 
-        <View className='pt-2'>
-          <Image source={icons.menu} className='w-5 h-5' resizeMode='contain' />
+        <View className='pt-2 w-10 h-10 items-center'>
+          <TouchableOpacity
+            onPress={() => setPlay(!play)}
+          >
+            <Image source={icons.menu} className='w-5 h-5' resizeMode='contain' />
+          </TouchableOpacity>
+
         </View>
       </View>
 
       {play ? (
-        <Text>Playing</Text>
+        <VideoCardVideo
+          // source={video} !!!!!! baad me chalu kar dena
+          setPlaying={setPlay}
+        />
       ) : (
         <TouchableOpacity
           onPress={() => setPlay(true)} className='w-full h-60 rounded-xl mt-3 relative justify-center items-center'
