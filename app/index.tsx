@@ -4,7 +4,6 @@ import { router, Redirect } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from '../constants';
 import { CustomButton } from '@/Components';
-import { signOut } from "@/lib/appwrite";
 import { useGlobalContext } from "@/context/GlobalProvider";
 
 export default function Index() {
@@ -57,23 +56,6 @@ export default function Index() {
               title='Continue with E-mail'
               handlePress={() => router.push('/sign-in')}
               containerStyles='w-full mt-7'
-            />
-            <CustomButton
-              title='logout'
-              handlePress={() => {
-                const handleSignOut = async () => {
-                  try {
-                    await signOut();
-                    router.push('/sign-in');
-                    setUser(null);
-                    setIsLoggedIn(false);
-                  } catch (error) {
-                    console.log(error);
-                  }
-                }
-                handleSignOut();
-              }}
-              containerStyles='w-[50%] mt-7'
             />
           </View>
         </ScrollView>
