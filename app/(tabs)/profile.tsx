@@ -1,5 +1,5 @@
-import { FlatList, Image, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { FlatList, Image, TouchableOpacity, View, RefreshControl } from 'react-native'
+import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import EmptyState from '@/Components/EmptyState'
 import { getUserPosts, signOut } from '@/lib/appwrite'
@@ -18,7 +18,12 @@ const Profile = () => {
     setIsLoggedIn(false);
     router.replace('/sign-in');
   }
-
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
+  }
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
@@ -68,9 +73,15 @@ const Profile = () => {
             subtitle='No videos found for this query'
           />
         )}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }
       />
     </SafeAreaView>
-  )
+  );
 }
 
 export default Profile;
