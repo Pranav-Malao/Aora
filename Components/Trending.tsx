@@ -1,5 +1,5 @@
 import { View, FlatList, Image, ImageBackground, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import * as Animatable from 'react-native-animatable';
 import { icons } from '@/constants';
 import TrendingVideo from './TrendingVideo';
@@ -69,11 +69,11 @@ const TrendingItem = ({ activeItem, item }: { activeItem: string, item: Post }) 
 const Trending = ({ posts }: Props) => {
   const [activeItem, setActiveItem] = useState(posts[0]?.$id);
 
-  const viewableItemsChanged = ({ viewableItems }: any) => {
+  const viewableItemsChanged = useCallback(({ viewableItems }: any) => {
     if (viewableItems.length > 0) { // ek se zyada items hai tab
       setActiveItem(viewableItems[0].key); // jo viewable hai (view me dikh raha hai) usko active item bana do jisse vo zoom ho jaye
     }
-  };
+  }, []);
   return (
     <View>
       <FlatList
